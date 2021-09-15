@@ -41,7 +41,7 @@ const Accueil = () => {
             <div className="App">
                 <h1 className="titre-accueil">Liste des recettes</h1>
                 <div className="filter-ctnr">
-                    <Form.Item name="rechercher" className="search-bar">
+                    <Form.Item name="rechercher" style={{ margin: 0, marginTop: 20 }}>
                         <Input placeholder="Rechercher" />
                     </Form.Item>
                     <Radio.Group defaultValue="Padawan" style={{ marginTop: 16 }}>
@@ -51,7 +51,7 @@ const Accueil = () => {
                     </Radio.Group>
                     <Select
                         showSearch
-                        style={{ width: 200 }}
+                        style={{ width: 200, marginTop: 20 }}
                         placeholder="Select a person"
                         optionFilterProp="children"
                         onChange={onChange}
@@ -68,6 +68,10 @@ const Accueil = () => {
                         <Option value="7">7</Option>
                         <Option value="8">8</Option>
                     </Select>
+                    <div className="time-ctnr">
+                        <label for="time">Temps de préparation</label>
+                        <input type="range" className="time" name="time" min="5" max="120" />
+                    </div>
                 </div>
                 <div className="recette-ctnr">
                     {recettes &&
