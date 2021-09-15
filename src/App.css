@@ -1,38 +1,56 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 body {
-  background-color: #ebebeb;
-  margin: 0;
+    background-color: #ebebeb;
+    margin: 0;
 }
 
 /* Header */
 
 header {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: auto;
-  height: auto;
-  padding: 0 25%;
-  background-color: #23282f;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: auto;
+    height: auto;
+    padding: 0 25%;
+    background-color: #23282f;
 }
 
 .header-a {
-  text-decoration: none;
-  color: #ebebeb;
-  padding: 30px 30px;
-  transition: 0.5s ease;
+    text-decoration: none;
+    color: #ebebeb;
+    padding: 30px 30px;
+    transition: 0.5s ease;
 }
 
 .header-a:hover {
-  background-color: #41b4b4;
-  color: #23282f;
-  transition: 0.5s ease;
+    background-color: #41b4b4;
+    color: #23282f;
+    transition: 0.5s ease;
 }
 
 .selected {
-  background-color: #41b4b4;
-  color: #23282f;
+    background-color: #41b4b4;
+    color: #23282f;
+}
+
+/* Accueil */
+
+.titre-accueil {
+    width: 100%;
+    height: auto;
+    padding: 75px;
+}
+
+.recette-ctnr {
+    width: 70%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
