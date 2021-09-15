@@ -19,20 +19,25 @@ const Accueil = () => {
     }, []);
 
     return (
-        <div className="App">
-            <h1 className="titre-accueil">Liste des recettes</h1>
-            <div className="recette-ctnr">
-                {recettes &&
-                    recettes.map(recette => (
-                        <Card
-                            style={{ width: 300, margin: 25 }}
-                            cover={<img alt="example" src={recette.photo} />}
-                            actions={[<SettingOutlined key="setting" />, <EditOutlined key="edit" />, <EllipsisOutlined key="ellipsis" />]}>
-                            <Meta title={recette.titre} description={recette.description} />
-                        </Card>
-                    ))}
+        <>
+            <div className="App">
+                <h1 className="titre-accueil">Liste des recettes</h1>
+                <form class="search-container">
+                    <input type="text" className="search-bar" />
+                </form>
+                <div className="recette-ctnr">
+                    {recettes &&
+                        recettes.map(recette => (
+                            <Card
+                                style={{ width: 300, margin: 25 }}
+                                cover={<img alt="example" src={recette.photo} />}
+                                actions={[<SettingOutlined key="setting" />, <EditOutlined key="edit" />, <EllipsisOutlined key="ellipsis" />]}>
+                                <Meta title={recette.titre} description={recette.description} />
+                            </Card>
+                        ))}
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
