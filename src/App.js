@@ -28,6 +28,8 @@ function App() {
                 <Route path="/" component={Accueil} exact />
                 {/*Ajouter */}
                 <Route path="/ajouter" component={Ajouter} exact />
+                {/* Infos */}
+                <Route path="/recette/:id" component={Infos} exact />
             </div>
         </BrowserRouter>
     );

@@ -67,7 +67,7 @@ header {
 
 .filter-ctnr {
     width: 80%;
-    margin: auto;
+    margin: 70px auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -78,4 +78,51 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* Bouton Card */
+
+.delete-btn {
+    transition: ease 0.5s;
+}
+
+.delete-btn:hover {
+    transition: ease 0.5s;
+    color: red;
+}
+
+/* Description Card Accueil */
+
+.infos-card-ctnr {
+    width: 100%;
+    margin-top: 15px;
+    padding: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Page Infos */
+
+.infos-global-ctnr {
+    width: 80%;
+    height: auto;
+    margin: auto;
+}
+
+.img-des-ctnr {
+    width: 50%;
+    height: 50%;
+    margin: auto;
+}
+
+.infos-icon-ctnr {
+    width: 30%;
+    margin: auto;
+}
+
+.infos-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

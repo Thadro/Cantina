@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Card, Radio, Select, Input, Form } from "antd";
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from "@ant-design/icons";
+import { EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
 
@@ -25,6 +26,8 @@ function onSearch(val) {
 }
 
 const Accueil = () => {
+    let history = useHistory();
+
     const [recettes, setRecettes] = useState(null);
 
     useEffect(() => {
@@ -32,7 +35,6 @@ const Accueil = () => {
             .then(res => res.json())
             .then(recipes => {
                 setRecettes(recipes);
-                console.log(recipes);
             });
     }, []);
 
@@ -79,8 +81,20 @@ const Accueil = () => {
                             <Card
                                 style={{ width: 300, margin: 25 }}
                                 cover={<img alt="example" src={recette.photo} />}
-                                actions={[<SettingOutlined key="setting" />, <EditOutlined key="edit" />, <EllipsisOutlined key="ellipsis" />]}>
-                                <Meta title={recette.titre} description={recette.description} />
+                                actions={[
+                                    <EyeOutlined key="details" onClick={() => history.push(`/recette/${recette.id}`)} />,
+                                    <EditOutlined key="modify" />,
+                                    <DeleteOutlined key="delete" className="delete-btn" />,
+                                ]}>
+                                <Meta title={recette.titre} />
+                                <div className="infos-card-ctnr">
+                                    <p>Niveau de force requis : {recette.niveau}</p>
+                                    <p>
+                                        Pour {recette.personnes}
+                                        {recette.personnes > 1 ? " personnes" : " personne"}
+                                    </p>
+                                    <p>{recette.tempsPreparation}min de préparation</p>
+                                </div>
                             </Card>
                         ))}
                 </div>
@@ -90,20 +104,3 @@ const Accueil = () => {
 };
 
 export default Accueil;
-
-{
-    /* <div className="radio-ctnr">
-                        <div className="radio-btn">
-                            <input type="radio" name="drone" value="Padawan" className="input-radio" checked />
-                            <label for="Padawan">Padawan</label>
-                        </div>
-                        <div className="radio-btn">
-                            <input type="radio" name="drone" value="Jedi" className="input-radio" checked />
-                            <label for="Jedi">Jedi</label>
-                        </div>
-                        <div className="radio-btn">
-                            <input type="radio" name="drone" value="Maître Jedi" className="input-radio" checked />
-                            <label for="Mâitre Jedi">Maître Jedi</label>
-                        </div>
-                    </div> */
-}
