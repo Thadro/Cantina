@@ -2,28 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import { Card, Radio, Select, Input, Form } from "antd";
+import { Card } from "antd";
 import { EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
-
-const { Option } = Select;
-
-function onChange(value) {
-    console.log(`selected ${value}`);
-}
-
-function onBlur() {
-    console.log("blur");
-}
-
-function onFocus() {
-    console.log("focus");
-}
-
-function onSearch(val) {
-    console.log("search:", val);
-}
 
 const Accueil = () => {
     let history = useHistory();
@@ -42,40 +24,43 @@ const Accueil = () => {
         <>
             <div className="App">
                 <h1 className="titre-accueil">Liste des recettes</h1>
-                <div className="filter-ctnr">
-                    <Form.Item name="rechercher" style={{ margin: 0, marginTop: 20 }}>
-                        <Input placeholder="Rechercher" />
-                    </Form.Item>
-                    <Radio.Group defaultValue="Padawan" style={{ marginTop: 16 }}>
-                        <Radio.Button value="Padawan">Padawan</Radio.Button>
-                        <Radio.Button value="Jedi">Jedi</Radio.Button>
-                        <Radio.Button value="Maitre Jedi">Maitre Jedi</Radio.Button>
-                    </Radio.Group>
-                    <Select
-                        showSearch
-                        style={{ width: 200, marginTop: 20 }}
-                        placeholder="Select a person"
-                        optionFilterProp="children"
-                        onChange={onChange}
-                        onFocus={onFocus}
-                        onBlur={onBlur}
-                        onSearch={onSearch}
-                        filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                        <Option value="1">1</Option>
-                        <Option value="2">2</Option>
-                        <Option value="3">3</Option>
-                        <Option value="4">4</Option>
-                        <Option value="5">5</Option>
-                        <Option value="6">6</Option>
-                        <Option value="7">7</Option>
-                        <Option value="8">8</Option>
-                        <Option value="9">9</Option>
-                    </Select>
-                    <div className="time-ctnr">
-                        <label for="time">Temps de préparation</label>
-                        <input type="range" className="time" name="time" min="5" max="120" />
-                    </div>
-                </div>
+                <form className="filter-ctnr">
+                    <input name="search to" type="text" size="15" placeholder="Nom de la recette" />
+                    <select>
+                        <option value="" disabled selected>
+                            Choississez votre niveau de difficulté
+                        </option>
+                        <option value="padawan">Padawan</option>
+                        <option value="jedi">Jedi</option>
+                        <option value="maître jedi">Maître Jedi</option>
+                    </select>
+                    <select>
+                        <option value="" disabled selected>
+                            Choississez le nombre de personne
+                        </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                    <select>
+                        <option value="" disabled selected>
+                            Temps de péparation
+                        </option>
+                        <option value="10min">Moins de temps de 10 min</option>
+                        <option value="20min">Moins de temps de 20 min</option>
+                        <option value="30min">Moins de temps de 30 min</option>
+                        <option value="40min">Moins de temps de 40 min</option>
+                        <option value="50min">Moins de temps de 50 min</option>
+                        <option value="60min">Moins de temps de 60 min</option>
+                        <option value="70min">Moins de temps de 70 min</option>
+                        <option value="80min">Moins de temps de 80 min</option>
+                    </select>
+                </form>
                 <div className="recette-ctnr">
                     {recettes &&
                         recettes.map(recette => (

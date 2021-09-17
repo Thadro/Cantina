@@ -1,101 +1,63 @@
 import React from "react";
-import { Form, Input, Button, Checkbox, Select } from "antd";
-import FormItem from "antd/lib/form/FormItem";
 
 function Ajouter() {
-    const { Option } = Select;
-
-    function onChange(value) {
-        console.log(`selected ${value}`);
-    }
-
-    function onBlur() {
-        console.log("blur");
-    }
-
-    function onFocus() {
-        console.log("focus");
-    }
-
-    function onSearch(val) {
-        console.log("search:", val);
-    }
-
     return (
         <div>
             <h2>Ajouter une recette</h2>
-            <Form
-                name="basic"
-                requiredMark={false}
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
-                initialValues={{ remember: true }}
-                autoComplete="off">
-                <Form.Item label="Titre" name="titre" rules={[{ required: true, message: "Vous devez rentrer un titre" }]}>
-                    <Input />
-                </Form.Item>
-
-                <Form.Item label="Description" name="description" rules={[{ required: true, message: "Vous devez rentrer une description" }]}>
-                    <Input />
-                </Form.Item>
-
-                <Form.Item
-                    label="Niveau"
-                    name="niveau"
-                    rules={[{ required: true, message: "Choississez le niveau entre padawan, jedi ou maître jedi" }]}>
-                    <Input />
-                </Form.Item>
-                <div className="select-ajout-ctnr">
-                    <Form.Item rules={[{ required: true, message: "Veuillez choisir le nombre de personne" }]}>
-                        <Select
-                            showSearch
-                            style={{ width: 200, marginTop: 20 }}
-                            placeholder="Nombre de personne"
-                            optionFilterProp="children"
-                            onChange={onChange}
-                            onFocus={onFocus}
-                            onBlur={onBlur}
-                            onSearch={onSearch}
-                            filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                            <Option value="1">1</Option>
-                            <Option value="2">2</Option>
-                            <Option value="3">3</Option>
-                            <Option value="4">4</Option>
-                            <Option value="5">5</Option>
-                            <Option value="6">6</Option>
-                            <Option value="7">7</Option>
-                            <Option value="8">8</Option>
-                            <Option value="9">9</Option>
-                        </Select>
-                    </Form.Item>
-
-                    <Form.Item rules={[{ required: true, message: "Veuillez choisir le nombre de personne" }]}>
-                        <Select
-                            showSearch
-                            style={{ width: 200, marginTop: 20 }}
-                            placeholder="Temps de préparation"
-                            optionFilterProp="children"
-                            onChange={onChange}
-                            onFocus={onFocus}
-                            onBlur={onBlur}
-                            onSearch={onSearch}
-                            filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                            <Option value="10min">10min</Option>
-                            <Option value="20min">20min</Option>
-                            <Option value="30min">30min</Option>
-                            <Option value="40min">40min</Option>
-                            <Option value="50min">50min</Option>
-                            <Option value="60min">60min</Option>
-                            <Option value="70min">70min</Option>
-                        </Select>
-                    </Form.Item>
+            <form className="filter-ctnr">
+                <input name="add title" type="text" size="15" placeholder="Titre de la recette" />
+                <input name="add description" type="text" size="25" placeholder="Description de la recette" />
+                <select>
+                    <option value="" disabled selected>
+                        Choississez le niveau de difficulté
+                    </option>
+                    <option value="padawan">Padawan</option>
+                    <option value="jedi">Jedi</option>
+                    <option value="maître jedi">Maître Jedi</option>
+                </select>
+                <select>
+                    <option value="" disabled selected>
+                        Choississez le nombre de personne
+                    </option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+                <select>
+                    <option value="" disabled selected>
+                        Temps de préparation (en minute)
+                    </option>
+                    <option value="10min">10</option>
+                    <option value="20min">20</option>
+                    <option value="30min">30</option>
+                    <option value="40min">40</option>
+                    <option value="50min">50</option>
+                    <option value="60min">60</option>
+                    <option value="70min">70</option>
+                    <option value="80min">80</option>
+                </select>
+                <div>
+                    <input name="quantité" type="number" size="5" placeholder="Quantité" />
+                    <select>
+                        <option value="" disabled selected>
+                            Quantité
+                        </option>
+                        <option value="g">g</option>
+                        <option value="cl">cl</option>
+                        <option value="quantité">Nb</option>
+                        <option value="cuillère">Cuillère à café</option>
+                    </select>
+                    <input className="ingredient-supp" type="button" value="X" style={{ height: 40, width: 40 }} />
                 </div>
-                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                    <Button type="primary" htmlType="submit">
-                        Submit
-                    </Button>
-                </Form.Item>
-            </Form>
+                <div>
+                    <textarea></textarea>
+                </div>
+            </form>
         </div>
     );
 }
