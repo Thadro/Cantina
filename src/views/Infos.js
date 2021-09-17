@@ -55,7 +55,8 @@ function Infos() {
                                 ))}
                         </div>
                         <div className="button-ctnr">
-                            <input className="modifier-btn" type="button" value="Modifier" />
+                            <input className="modifier-btn" type="button" value="Modifier" style={{ height: 40, width: 150 }} />
+                            <input className="supprimer-btn" type="button" value="Supprimer" style={{ height: 40, width: 150 }} />
                         </div>
                     </div>
                 )}

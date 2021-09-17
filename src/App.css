@@ -80,17 +80,6 @@ header {
     align-items: center;
 }
 
-/* Bouton Card */
-
-.delete-btn {
-    transition: ease 0.5s;
-}
-
-.delete-btn:hover {
-    transition: ease 0.5s;
-    color: red;
-}
-
 /* Description Card Accueil */
 
 .infos-card-ctnr {
@@ -125,6 +114,10 @@ header {
     margin: 25px 0;
 }
 
+.img-des-ctnr h4 {
+    margin-bottom: 50px;
+}
+
 .infos-recette-ctnr {
     width: 30%;
     margin: auto;
@@ -141,3 +134,41 @@ header {
 }
 
 /* Bouton infos recette */
+
+.button-ctnr {
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.modifier-btn {
+    margin: auto;
+    transition: ease 0.5s;
+    background-color: #ebebeb;
+    color: #009e32;
+    border: none;
+}
+
+.modifier-btn:hover {
+    transform: scale(1.1);
+    transition: ease 0.5s;
+    background-color: #009e32;
+    color: #ebebeb;
+}
+
+.supprimer-btn {
+    transition: ease 0.5s;
+    color: red;
+    background-color: #ebebeb;
+    border: none;
+}
+
+.supprimer-btn:hover {
+    transform: scale(1.1);
+    transition: ease 0.5s;
+    color: #ebebeb;
+    background-color: red;
+}
