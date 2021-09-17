@@ -69,6 +69,7 @@ const Accueil = () => {
                         <Option value="6">6</Option>
                         <Option value="7">7</Option>
                         <Option value="8">8</Option>
+                        <Option value="9">9</Option>
                     </Select>
                     <div className="time-ctnr">
                         <label for="time">Temps de préparation</label>

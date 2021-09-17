@@ -153,7 +153,7 @@ header {
 }
 
 .modifier-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: ease 0.5s;
     background-color: #009e32;
     color: #ebebeb;
@@ -167,7 +167,7 @@ header {
 }
 
 .supprimer-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: ease 0.5s;
     color: #ebebeb;
     background-color: red;
