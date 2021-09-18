@@ -11,28 +11,35 @@ import Modification from "./views/Modification";
 //  http://localhost:9000/api/recipes
 
 function App() {
-    return (
-        <BrowserRouter>
-            <div className="App">
-                <header>
-                    <NavLink to="/" activeClassName="selected" className="header-a" exact>
-                        Accueil
-                    </NavLink>
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <header>
+          <NavLink to="/" activeClassName="selected" className="header-a" exact>
+            Accueil
+          </NavLink>
 
-                    <NavLink to="/ajouter" activeClassName="selected" className="header-a" exact>
-                        Ajouter
-                    </NavLink>
-                </header>
+          <NavLink
+            to="/ajouter"
+            activeClassName="selected"
+            className="header-a"
+            exact
+          >
+            Ajouter
+          </NavLink>
+        </header>
 
-                {/*Accueil */}
-                <Route path="/" component={Accueil} exact />
-                {/*Ajouter */}
-                <Route path="/ajouter" component={Ajouter} exact />
-                {/* Infos */}
-                <Route path="/recette/:id" component={Infos} exact />
-            </div>
-        </BrowserRouter>
-    );
+        {/*Accueil */}
+        <Route path="/" component={Accueil} exact />
+        {/*Ajouter */}
+        <Route path="/ajouter" component={Ajouter} exact />
+        {/* Infos */}
+        <Route path="/recette/:id" component={Infos} exact />
+        {/* Modifier */}
+        <Route path="/recette/edit/:id" component={Modification} exact />
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;

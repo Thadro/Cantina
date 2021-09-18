@@ -1,174 +1,275 @@
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 body {
-    background-color: #ebebeb;
-    margin: 0;
+  background-color: #ebebeb;
+  margin: 0;
 }
 
 /* Header */
 
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: auto;
-    height: auto;
-    padding: 0 25%;
-    background-color: #23282f;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: auto;
+  height: auto;
+  padding: 0 25%;
+  background-color: #23282f;
 }
 
 .header-a {
-    text-decoration: none;
-    color: #ebebeb;
-    padding: 30px 30px;
-    transition: 0.5s ease;
+  text-decoration: none;
+  color: #ebebeb;
+  padding: 30px 30px;
+  transition: 0.5s ease;
 }
 
 .header-a:hover {
-    background-color: #41b4b4;
-    color: #23282f;
-    transition: 0.5s ease;
+  background-color: #41b4b4;
+  color: #23282f;
+  transition: 0.5s ease;
 }
 
 .selected {
-    background-color: #41b4b4;
-    color: #23282f;
+  background-color: #41b4b4;
+  color: #23282f;
 }
 
 /* Accueil */
 
 .titre-accueil {
-    width: 100%;
-    height: auto;
-    padding: 75px;
+  width: 100%;
+  height: auto;
+  padding: 75px;
 }
 
 .recette-ctnr {
-    width: 70%;
-    height: auto;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
+  width: 70%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .search-container {
-    width: 75%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin: 0 auto;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
 }
 
 /* Accueil Search Bar */
 
 .filter-ctnr {
-    width: 80%;
-    margin: 70px auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 80%;
+  margin: 70px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .time-ctnr {
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Description Card Accueil */
 
 .infos-card-ctnr {
-    width: 100%;
-    margin-top: 15px;
-    padding: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  margin-top: 15px;
+  padding: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Page Infos */
 
 .infos-global-ctnr {
-    width: 90%;
-    height: auto;
-    margin: 100px auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 90%;
+  height: auto;
+  margin: 100px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .img-des-ctnr {
-    width: 50%;
-    height: 50%;
-    margin: auto;
+  width: 50%;
+  height: 50%;
+  margin: auto;
 }
 
 .img-des-ctnr img {
-    width: 50%;
-    height: 50%;
-    margin: 25px 0;
+  width: 50%;
+  height: 50%;
+  margin: 25px 0;
 }
 
 .img-des-ctnr h4 {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .infos-recette-ctnr {
-    width: 30%;
-    margin: auto;
+  width: 30%;
+  margin: auto;
 }
 
 .infos-recette {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ingredients-recette {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 /* Bouton infos recette */
 
 .button-ctnr {
-    width: 100%;
-    height: auto;
-    margin-top: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .modifier-btn {
-    margin: auto;
-    transition: ease 0.5s;
-    background-color: #ebebeb;
-    color: #009e32;
-    border: none;
+  margin: auto;
+  margin: 0;
+  transition: ease 0.5s;
+  background-color: #ebebeb;
+  color: #009e32;
+  border: none;
 }
 
 .modifier-btn:hover {
-    transform: scale(1.05);
-    transition: ease 0.5s;
-    background-color: #009e32;
-    color: #ebebeb;
+  transform: scale(1.05);
+  transition: ease 0.5s;
+  background-color: #009e32;
+  color: #ebebeb;
 }
 
 .supprimer-btn {
-    transition: ease 0.5s;
-    color: red;
-    background-color: #ebebeb;
-    border: none;
+  transition: ease 0.5s;
+  color: red;
+  background-color: #ebebeb;
+  border: none;
 }
 
 .supprimer-btn:hover {
-    transform: scale(1.05);
-    transition: ease 0.5s;
-    color: #ebebeb;
-    background-color: red;
+  transform: scale(1.05);
+  transition: ease 0.5s;
+  color: #ebebeb;
+  background-color: red;
+}
+
+/* Ajouter une recette */
+
+.add-recipe-ctnr {
+  width: 60%;
+  margin: 100px auto;
+}
+
+.add-recipe-ctnr h2 {
+  margin-bottom: 50px;
+}
+
+.add-recipe {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-des-ctnr {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.first-select-ctnr {
+  width: 100%;
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.quantite-etape-ctnr {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.quantite-global-ctnr {
+  width: 30%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quantite-ctnr {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.add-recipe input {
+  margin-bottom: 50px;
+}
+
+.add-recipe select {
+  margin-bottom: 50px;
+}
+
+.ingredient-supp {
+  margin: 0;
+}
+
+.etape-global-ctnr {
+  width: 30%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.etape-ctnr {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.textarea1 {
+  width: 290px;
+  resize: none;
+}
+
+/* Modifier recette */
+
+.button-modif-ctnr {
+  width: 40%;
+  height: auto;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
