@@ -1,6 +1,6 @@
 import React from "react";
 
-function Ajouter() {
+function Modification() {
   return (
     <div class="add-recipe-ctnr">
       <h2>Modifier une recette</h2>
@@ -124,4 +124,4 @@ function Ajouter() {
   );
 }
 
-export default Ajouter;
+export default Modification;
