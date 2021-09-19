@@ -25,6 +25,7 @@ class Ajouter extends React.Component {
     // Etape
     this.addEtape = this.addEtape.bind(this);
     this.deleteEtape = this.deleteEtape.bind(this);
+    this.handleEtapeChange = this.handleEtapeChange.bind(this);
     this.ajouter = this.ajouter.bind(this);
   }
 
@@ -32,10 +33,10 @@ class Ajouter extends React.Component {
     this.setState(
       {
         [event.target.name]: event.target.value,
-      },
-      () => {
-        console.log(this.state);
       }
+      //   () => {
+      //     console.log(this.state);
+      //   }
     );
   }
 
@@ -43,10 +44,10 @@ class Ajouter extends React.Component {
     this.setState(
       {
         [event.target.name]: +event.target.value,
-      },
-      () => {
-        console.log(this.state);
       }
+      //   () => {
+      //     console.log(this.state);
+      //   }
     );
   }
 
@@ -81,8 +82,14 @@ class Ajouter extends React.Component {
   }
 
   deleteEtape(index) {
-    const ingredients = this.state.ingredients;
-    ingredients.splice(index, 1);
+    const etapes = this.state.etapes;
+    etapes.splice(index, 1);
+    this.setState({ ...this.state });
+  }
+
+  handleEtapeChange(index, event) {
+    const etapes = this.state.etapes;
+    etapes[index][0] = event.target.value;
     this.setState({ ...this.state });
   }
 
@@ -209,7 +216,10 @@ class Ajouter extends React.Component {
               <div className="etape-ctnr">
                 {this.state.etapes.map((etape, index) => (
                   <div className="etape">
-                    <textarea className="textarea1"></textarea>
+                    <textarea
+                      className="textarea1"
+                      onChange={(event) => this.handleEtapeChange(index, event)}
+                    ></textarea>
                     <input
                       className="etape-supp"
                       type="button"
@@ -220,7 +230,7 @@ class Ajouter extends React.Component {
                         marginBottom: 0,
                         marginLeft: 5,
                       }}
-                      onClick={() => this.deleteEtape(etape)}
+                      onClick={() => this.deleteEtape(index)}
                     />
                   </div>
                 ))}
