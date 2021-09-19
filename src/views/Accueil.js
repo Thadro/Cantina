@@ -46,6 +46,28 @@ const Accueil = () => {
     setTempsPrep(event.target.value);
   };
 
+  const supprimer = (id) => {
+    const deleteRecipe = {
+      method: "DELETE",
+      header: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(null),
+    };
+    fetch(`http://localhost:9000/api/recipe/${id}`, deleteRecipe).then(
+      (res) => {
+        if (res.status === 200) {
+          recettes.splice(
+            recettes.findIndex((recette) => recette.id === id),
+            1
+          );
+          setRecettes([...recettes]);
+          alert("Recette supprimée avec succés");
+        }
+      }
+    );
+  };
+
   useEffect(() => {
     fetch("http://localhost:9000/api/recipes")
       .then((res) => res.json())
@@ -122,7 +144,11 @@ const Accueil = () => {
                     key="modify"
                     onClick={() => history.push(`/recette/edit/${recette.id}`)}
                   />,
-                  <DeleteOutlined key="delete" className="delete-btn" />,
+                  <DeleteOutlined
+                    key="delete"
+                    className="delete-btn"
+                    onClick={() => supprimer(recette.id)}
+                  />,
                 ]}
               >
                 <Meta title={recette.titre} />

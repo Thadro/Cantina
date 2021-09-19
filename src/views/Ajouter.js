@@ -4,13 +4,17 @@ class Ajouter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      titre: "",
-      description: "",
-      niveau: "",
-      personnes: "",
-      tempsPreparation: "",
-      ingredients: [],
-      etapes: [],
+      recette: {
+        titre: "",
+        description: "",
+        niveau: "",
+        personnes: "",
+        tempsPreparation: "",
+        ingredients: [],
+        etapes: [],
+        photo: "",
+      },
+      erreur: "",
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -32,7 +36,10 @@ class Ajouter extends React.Component {
   handleInputChange(event) {
     this.setState(
       {
-        [event.target.name]: event.target.value,
+        recette: {
+          ...this.state.recette,
+          [event.target.name]: event.target.value,
+        },
       }
       //   () => {
       //     console.log(this.state);
@@ -43,7 +50,10 @@ class Ajouter extends React.Component {
   handleNumberChange(event) {
     this.setState(
       {
-        [event.target.name]: +event.target.value,
+        recette: {
+          ...this.state.recette,
+          [event.target.name]: +event.target.value,
+        },
       }
       //   () => {
       //     console.log(this.state);
@@ -52,49 +62,67 @@ class Ajouter extends React.Component {
   }
 
   addIngredient() {
-    const ingredients = this.state.ingredients;
+    const ingredients = this.state.recette.ingredients;
     ingredients.push(["", ""]);
     this.setState({ ...this.state });
   }
 
   deleteIngredient(index) {
-    const ingredients = this.state.ingredients;
+    const ingredients = this.state.recette.ingredients;
     ingredients.splice(index, 1);
     this.setState({ ...this.state });
   }
 
   handleIngredientQuantityChange(index, event) {
-    const ingredients = this.state.ingredients;
+    const ingredients = this.state.recette.ingredients;
     ingredients[index][0] = event.target.value;
     this.setState({ ...this.state });
   }
 
   handleIngredientNameChange(index, event) {
-    const ingredients = this.state.ingredients;
+    const ingredients = this.state.recette.ingredients;
     ingredients[index][1] = event.target.value;
     this.setState({ ...this.state });
   }
 
   addEtape() {
-    const etapes = this.state.etapes;
-    etapes.push([""]);
+    const etapes = this.state.recette.etapes;
+    etapes.push("");
     this.setState({ ...this.state });
   }
 
   deleteEtape(index) {
-    const etapes = this.state.etapes;
+    const etapes = this.state.recette.etapes;
     etapes.splice(index, 1);
     this.setState({ ...this.state });
   }
 
   handleEtapeChange(index, event) {
-    const etapes = this.state.etapes;
-    etapes[index][0] = event.target.value;
+    const etapes = this.state.recette.etapes;
+    etapes[index] = event.target.value;
     this.setState({ ...this.state });
   }
 
   ajouter(event) {
-    event.preventDefault();
+    const requestRecipe = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(this.state.recette),
+    };
+    fetch("http://localhost:9000/api/recipes", requestRecipe).then((res) => {
+      if (res.status === 201) {
+        alert("Recette crée avec succés");
+      } else {
+        res.json().then((json) => {
+          console.log(json);
+          this.setState({ erreur: json.errorMessage });
+        });
+        //   console.log(res.json.then)
+        alert("Des erreurs bg");
+      }
+      console.log(res);
+    });
+
     console.log(this.state);
   }
 
@@ -103,6 +131,7 @@ class Ajouter extends React.Component {
       <>
         <div class="add-recipe-ctnr">
           <h2>Ajouter une recette</h2>
+          <div>{this.state.erreur}</div>
           <form className="add-recipe">
             <div className="title-des-ctnr">
               <input
@@ -110,23 +139,27 @@ class Ajouter extends React.Component {
                 type="text"
                 size="15"
                 placeholder="Titre de la recette"
-                value={this.state.titre}
+                value={this.state.recette.titre}
                 onChange={this.handleInputChange}
+                required
               />
+
               <input
                 name="description"
                 type="text"
                 size="25"
                 placeholder="Description de la recette"
-                value={this.state.description}
+                value={this.state.recette.description}
                 onChange={this.handleInputChange}
+                required
               />
             </div>
             <div className="first-select-ctnr">
               <select
                 name="niveau"
-                value={this.state.niveau}
+                value={this.state.recette.niveau}
                 onChange={this.handleInputChange}
+                required
               >
                 <option value="" disabled selected>
                   Choississez le niveau de difficulté
@@ -137,8 +170,9 @@ class Ajouter extends React.Component {
               </select>
               <select
                 name="personnes"
-                value={this.state.personnes}
+                value={this.state.recette.personnes}
                 onChange={this.handleNumberChange}
+                required
               >
                 <option value="" disabled selected>
                   Choississez le nombre de personne
@@ -154,8 +188,9 @@ class Ajouter extends React.Component {
               </select>
               <select
                 name="tempsPreparation"
-                value={this.state.tempsPreparation}
+                value={this.state.recette.tempsPreparation}
                 onChange={this.handleNumberChange}
+                required
               >
                 <option value="" disabled selected>
                   Temps de préparation (en minute)
@@ -173,7 +208,7 @@ class Ajouter extends React.Component {
             <div className="quantite-etape-ctnr">
               <div className="quantite-global-ctnr">
                 <div className="quantite-ctnr">
-                  {this.state.ingredients.map((ingredient, index) => (
+                  {this.state.recette.ingredients.map((ingredient, index) => (
                     <div key={index}>
                       <input
                         name="quantité"
@@ -183,6 +218,7 @@ class Ajouter extends React.Component {
                         onChange={(event) =>
                           this.handleIngredientQuantityChange(index, event)
                         }
+                        required
                       />
                       <input
                         name="name"
@@ -192,6 +228,7 @@ class Ajouter extends React.Component {
                         onChange={(event) =>
                           this.handleIngredientNameChange(index, event)
                         }
+                        required
                       />
                       <input
                         className="quantité"
@@ -214,11 +251,13 @@ class Ajouter extends React.Component {
             </div>
             <div className="etape-global-ctnr">
               <div className="etape-ctnr">
-                {this.state.etapes.map((etape, index) => (
-                  <div className="etape">
+                {this.state.recette.etapes.map((etape, index) => (
+                  <div className="etape" key={index}>
                     <textarea
                       className="textarea1"
+                      value={etape}
                       onChange={(event) => this.handleEtapeChange(index, event)}
+                      required
                     ></textarea>
                     <input
                       className="etape-supp"
@@ -242,6 +281,16 @@ class Ajouter extends React.Component {
                   onClick={this.addEtape}
                 />
               </div>
+            </div>
+            <div>
+              <input
+                type="text"
+                value={this.state.recette.photo}
+                name="photo"
+                onChange={this.handleInputChange}
+                size="50"
+                placeholder="Photo de la recette"
+              />
             </div>
             <div className="button-modif-ctnr">
               <input
