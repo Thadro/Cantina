@@ -13,13 +13,17 @@ const Accueil = () => {
   const [recettes, setRecettes] = useState(null);
   const [recherche, setRecherche] = useState("");
   const [niveau, setNiveau] = useState("");
-  const [personne, setPersonne] = useState("");
+  const [minPersonne, setMinPersonne] = useState("");
+  const [maxPersonne, setMaxPersonne] = useState("");
+  const [tempsPrep, setTempsPrep] = useState("");
   const filter = (recette) => {
     console.log(recette, recherche);
     return (
       recette.titre.toLowerCase().includes(recherche.toLowerCase()) &&
       (niveau === "" || recette.niveau === niveau) &&
-      (personne === "" || recette.personnes === personne)
+      (minPersonne === "" || recette.personnes >= +minPersonne) &&
+      (maxPersonne === "" || recette.personnes <= +maxPersonne) &&
+      (tempsPrep === "" || recette.tempsPreparation <= +tempsPrep)
     );
   };
   const handleChange = (event) => {
@@ -30,8 +34,16 @@ const Accueil = () => {
     setNiveau(event.target.value);
   };
 
-  const handlePersonne = (event) => {
-    setPersonne(event.target.value);
+  const handleMinPersonne = (event) => {
+    setMinPersonne(event.target.value);
+  };
+
+  const handleMaxPersonne = (event) => {
+    setMaxPersonne(event.target.value);
+  };
+
+  const handleTempsPrep = (event) => {
+    setTempsPrep(event.target.value);
   };
 
   useEffect(() => {
@@ -61,11 +73,9 @@ const Accueil = () => {
             <option value="jedi">Jedi</option>
             <option value="maitre">Maître Jedi</option>
           </select>
-          <select value={personne} onChange={handlePersonne}>
-            <option value="">Choississez le nombre de personne</option>
-            <option type="number" value="1">
-              1
-            </option>
+          <select value={minPersonne} onChange={handleMinPersonne}>
+            <option value="">Min Personne</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
@@ -74,18 +84,27 @@ const Accueil = () => {
             <option value="7">7</option>
             <option value="8">8</option>
           </select>
-          <select>
-            <option value="" disabled selected>
-              Temps de péparation
-            </option>
-            <option value="10min">Moins de temps de 10 min</option>
-            <option value="20min">Moins de temps de 20 min</option>
-            <option value="30min">Moins de temps de 30 min</option>
-            <option value="40min">Moins de temps de 40 min</option>
-            <option value="50min">Moins de temps de 50 min</option>
-            <option value="60min">Moins de temps de 60 min</option>
-            <option value="70min">Moins de temps de 70 min</option>
-            <option value="80min">Moins de temps de 80 min</option>
+          <select value={maxPersonne} onChange={handleMaxPersonne}>
+            <option value="">Max Personne</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+          <select value={tempsPrep} onChange={handleTempsPrep}>
+            <option value="">Temps de péparation</option>
+            <option value="10">Moins de 10 min</option>
+            <option value="20">Moins de 20 min</option>
+            <option value="30">Moins de 30 min</option>
+            <option value="40">Moins de 40 min</option>
+            <option value="50">Moins de 50 min</option>
+            <option value="60">Moins de 60 min</option>
+            <option value="70">Moins de 70 min</option>
+            <option value="80">Moins de 80 min</option>
           </select>
         </form>
         <div className="recette-ctnr">
