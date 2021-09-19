@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {
   StarOutlined,
@@ -11,6 +12,25 @@ function Infos() {
   let { id } = useParams();
 
   const [recette, setRecettes] = useState(null);
+  let history = useHistory();
+
+  const supprimer = (id) => {
+    const deleteRecipe = {
+      method: "DELETE",
+      header: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(null),
+    };
+    fetch(`http://localhost:9000/api/recipe/${id}`, deleteRecipe).then(
+      (res) => {
+        if (res.status === 200) {
+          alert("Recette supprimée avec succés");
+          history.push("/");
+        }
+      }
+    );
+  };
 
   useEffect(() => {
     fetch(`http://localhost:9000/api/recipe/${id}`)
@@ -67,12 +87,16 @@ function Infos() {
                 type="button"
                 value="Modifier"
                 style={{ height: 40, width: 150 }}
+                onClick={() => {
+                  history.push(`/recette/edit/${recette.id}`);
+                }}
               />
               <input
                 className="supprimer-btn"
                 type="button"
                 value="Supprimer"
                 style={{ height: 40, width: 150 }}
+                onClick={() => supprimer(recette.id)}
               />
             </div>
           </div>
