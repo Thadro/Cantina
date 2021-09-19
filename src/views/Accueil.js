@@ -10,12 +10,16 @@ const { Meta } = Card;
 const Accueil = () => {
   let history = useHistory();
 
+  // Destructuration => recette indice[0], setRecette indice[1]
+
   const [recettes, setRecettes] = useState(null);
   const [recherche, setRecherche] = useState("");
   const [niveau, setNiveau] = useState("");
   const [minPersonne, setMinPersonne] = useState("");
   const [maxPersonne, setMaxPersonne] = useState("");
   const [tempsPrep, setTempsPrep] = useState("");
+
+  // Fonction pour gérer les filtres
   const filter = (recette) => {
     console.log(recette, recherche);
     return (
@@ -26,6 +30,8 @@ const Accueil = () => {
       (tempsPrep === "" || recette.tempsPreparation <= +tempsPrep)
     );
   };
+
+  // Permet de gérer le changement des différents champs
   const handleChange = (event) => {
     setRecherche(event.target.value);
   };
@@ -45,6 +51,8 @@ const Accueil = () => {
   const handleTempsPrep = (event) => {
     setTempsPrep(event.target.value);
   };
+
+  // Function permettant de supprimer une recette de l'api + tableau
 
   const supprimer = (id) => {
     const deleteRecipe = {
@@ -67,6 +75,8 @@ const Accueil = () => {
       }
     );
   };
+
+  // Permet de récupérer les infos de l'api
 
   useEffect(() => {
     fetch("http://localhost:9000/api/recipes")
@@ -130,6 +140,8 @@ const Accueil = () => {
           </select>
         </form>
         <div className="recette-ctnr">
+          {/* Map me permettant d'afficher la totalité des recettes présentes dans l'api */}
+
           {recettes &&
             recettes.filter(filter).map((recette) => (
               <Card

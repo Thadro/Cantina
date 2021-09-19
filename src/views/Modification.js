@@ -18,6 +18,9 @@ class Modification extends React.Component {
       erreur: "",
     };
 
+    // HandleInputChange => bind(this) renvoie une fonction avec le this définit par défaut
+    // Ce qui permet d'utiliser this.setState, State etc, this = instance de la class Ajouter
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleNumberChange = this.handleNumberChange.bind(this);
     // Ingredient
@@ -33,6 +36,9 @@ class Modification extends React.Component {
     this.handleEtapeChange = this.handleEtapeChange.bind(this);
     this.modifier = this.modifier.bind(this);
   }
+
+  // Permet de récupérer les données de la recette au moment ou le composant s'affiche
+
   componentDidMount() {
     const id = this.props.match.params.id;
     fetch(`http://localhost:9000/api/recipe/${id}`)
@@ -42,33 +48,28 @@ class Modification extends React.Component {
         console.log(recipes);
       });
   }
+
+  // Permet de gérer le changement des différents champs
+
   handleInputChange(event) {
-    this.setState(
-      {
-        recette: {
-          ...this.state.recette,
-          [event.target.name]: event.target.value,
-        },
-      }
-      //   () => {
-      //     console.log(this.state);
-      //   }
-    );
+    this.setState({
+      recette: {
+        ...this.state.recette,
+        [event.target.name]: event.target.value,
+      },
+    });
   }
 
   handleNumberChange(event) {
-    this.setState(
-      {
-        recette: {
-          ...this.state.recette,
-          [event.target.name]: +event.target.value,
-        },
-      }
-      //   () => {
-      //     console.log(this.state);
-      //   }
-    );
+    this.setState({
+      recette: {
+        ...this.state.recette,
+        [event.target.name]: +event.target.value,
+      },
+    });
   }
+
+  // Permet d'intéragir avec les ingrédients
 
   addIngredient() {
     const ingredients = this.state.recette.ingredients;
@@ -94,6 +95,8 @@ class Modification extends React.Component {
     this.setState({ ...this.state });
   }
 
+  // Permet d'intéragir avec les Étapes
+
   addEtape() {
     const etapes = this.state.recette.etapes;
     etapes.push("");
@@ -111,6 +114,8 @@ class Modification extends React.Component {
     etapes[index] = event.target.value;
     this.setState({ ...this.state });
   }
+
+  // Fonction permettant de mettre à jour les données de la recette
 
   modifier(event) {
     event.preventDefault();

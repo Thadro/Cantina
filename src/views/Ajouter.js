@@ -17,6 +17,9 @@ class Ajouter extends React.Component {
       erreur: "",
     };
 
+    // HandleInputChange => bind(this) renvoie une fonction avec le this définit par défaut
+    // Ce qui permet d'utiliser this.setState, State etc, this = instance de la class Ajouter
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleNumberChange = this.handleNumberChange.bind(this);
     // Ingredient
@@ -33,33 +36,28 @@ class Ajouter extends React.Component {
     this.ajouter = this.ajouter.bind(this);
   }
 
+  // Permet de gérer le changement des différents champs
+
   handleInputChange(event) {
-    this.setState(
-      {
-        recette: {
-          ...this.state.recette,
-          [event.target.name]: event.target.value,
-        },
-      }
-      //   () => {
-      //     console.log(this.state);
-      //   }
-    );
+    this.setState({
+      recette: {
+        ...this.state.recette,
+        // [] remplace le contenu par event.target.name
+        [event.target.name]: event.target.value,
+      },
+    });
   }
 
   handleNumberChange(event) {
-    this.setState(
-      {
-        recette: {
-          ...this.state.recette,
-          [event.target.name]: +event.target.value,
-        },
-      }
-      //   () => {
-      //     console.log(this.state);
-      //   }
-    );
+    this.setState({
+      recette: {
+        ...this.state.recette,
+        [event.target.name]: +event.target.value,
+      },
+    });
   }
+
+  // Permet d'interagir avec les ingredients
 
   addIngredient() {
     const ingredients = this.state.recette.ingredients;
@@ -85,6 +83,8 @@ class Ajouter extends React.Component {
     this.setState({ ...this.state });
   }
 
+  // Permet d'interagir avec les étapes
+
   addEtape() {
     const etapes = this.state.recette.etapes;
     etapes.push("");
@@ -103,6 +103,8 @@ class Ajouter extends React.Component {
     this.setState({ ...this.state });
   }
 
+  // Fonction qui permet d'ajouter une recette dans la base de donné de l'API
+
   ajouter(event) {
     const requestRecipe = {
       method: "POST",
@@ -114,16 +116,11 @@ class Ajouter extends React.Component {
         alert("Recette crée avec succés");
       } else {
         res.json().then((json) => {
-          console.log(json);
           this.setState({ erreur: json.errorMessage });
         });
-        //   console.log(res.json.then)
-        alert("Des erreurs bg");
+        alert("Error");
       }
-      console.log(res);
     });
-
-    console.log(this.state);
   }
 
   render() {
@@ -251,6 +248,8 @@ class Ajouter extends React.Component {
             </div>
             <div className="etape-global-ctnr">
               <div className="etape-ctnr">
+                {/* Map permettant d'avoir plusieurs étapes possible ou d'en supprimer */}
+
                 {this.state.recette.etapes.map((etape, index) => (
                   <div className="etape" key={index}>
                     <textarea
@@ -298,7 +297,7 @@ class Ajouter extends React.Component {
                 type="submit"
                 value="Ajouter votre recette"
                 style={{ height: 40, width: 150 }}
-                onClick={(event) => this.ajouter(event)}
+                onClick={this.ajouter}
               />
             </div>
           </form>

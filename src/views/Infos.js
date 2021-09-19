@@ -14,13 +14,11 @@ function Infos() {
   const [recette, setRecettes] = useState(null);
   let history = useHistory();
 
+  // fonction supprimer me permettant de retirer une recette présente dans l'api
+
   const supprimer = (id) => {
     const deleteRecipe = {
       method: "DELETE",
-      header: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(null),
     };
     fetch(`http://localhost:9000/api/recipe/${id}`, deleteRecipe).then(
       (res) => {
@@ -31,6 +29,8 @@ function Infos() {
       }
     );
   };
+
+  // Permet de récupérer les infos de l'api
 
   useEffect(() => {
     fetch(`http://localhost:9000/api/recipe/${id}`)
@@ -73,6 +73,8 @@ function Infos() {
 
             <div className="ingredients-recette">
               <h3>Liste des ingredients : </h3>
+
+              {/* Map permettant d'afficher les ingredients correctement */}
               {recette &&
                 recette.ingredients.map((ingredient) => (
                   <p>
