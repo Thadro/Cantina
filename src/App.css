@@ -27,14 +27,14 @@ header {
 }
 
 .header-a:hover {
-  background-color: #41b4b4;
-  color: #23282f;
+  background-color: #61b5ff;
+  color: #f7f7f7;
   transition: 0.5s ease;
 }
 
 .selected {
-  background-color: #41b4b4;
-  color: #23282f;
+  background-color: #61b5ff;
+  color: #f7f7f7;
 }
 
 /* Accueil */
@@ -133,6 +133,10 @@ header {
   margin-top: 50px;
 }
 
+h4 {
+  font-size: 1.2em;
+}
+
 /* Bouton infos recette */
 
 .button-ctnr {
@@ -179,6 +183,7 @@ header {
 .add-recipe-ctnr {
   width: 60%;
   margin: 100px auto;
+  background-color: #f7f7f7;
 }
 
 .add-recipe-ctnr h2 {
@@ -244,6 +249,11 @@ header {
   margin: 0;
 }
 
+.quantite {
+  display: flex;
+  align-items: center;
+}
+
 .etape-global-ctnr {
   width: 30%;
   height: auto;
@@ -269,6 +279,27 @@ header {
 .textarea1 {
   width: 290px;
   resize: none;
+  border: none;
+}
+
+.textarea1:focus {
+  outline: none;
+  resize: none;
+  border: 1px solid #61b5ff;
+}
+
+.ajouter-etape {
+  transition: ease 0.5s;
+  background-color: #ebebeb;
+  color: #61b5ff;
+  border: none;
+}
+
+.ajouter-etape:hover {
+  transform: scale(1.05);
+  transition: ease 0.5s;
+  color: #ebebeb;
+  background-color: #61b5ff;
 }
 
 /* Modifier recette */
@@ -280,4 +311,46 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+.select-accueil {
+  margin: 0;
+  border: none;
+  background-color: #f7f7f7;
+}
+
+.select-accueil:focus {
+  border: 1px solid #61b5ff;
+  outline: none;
+  background-color: #f7f7f7;
+}
+
+.select {
+  margin: 0;
+  border: none;
+}
+
+.select:focus {
+  border: 1px solid #61b5ff;
+  outline: none;
+}
+
+.input-accueil {
+  border: none;
+  background-color: #f7f7f7;
+}
+
+.input-accueil:focus {
+  outline: none;
+  border: #61b5ff 1px solid;
+  background-color: #f7f7f7;
+}
+
+.input {
+  border: none;
+}
+
+.input:focus {
+  outline: none;
+  border: #61b5ff 1px solid;
 }

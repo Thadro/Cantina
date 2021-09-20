@@ -135,7 +135,6 @@ class Modification extends React.Component {
           console.log(json);
           this.setState({ erreur: json.errorMessage });
         });
-        //   console.log(res.json.then)
         alert("Des erreurs bg");
       }
       console.log(res);
@@ -153,6 +152,7 @@ class Modification extends React.Component {
           <form className="add-recipe">
             <div className="title-des-ctnr">
               <input
+                className="input"
                 name="titre"
                 type="text"
                 size="15"
@@ -163,6 +163,7 @@ class Modification extends React.Component {
               />
 
               <input
+                className="input"
                 name="description"
                 type="text"
                 size="25"
@@ -174,6 +175,7 @@ class Modification extends React.Component {
             </div>
             <div className="first-select-ctnr">
               <select
+                className="select"
                 name="niveau"
                 value={this.state.recette.niveau}
                 onChange={this.handleInputChange}
@@ -187,6 +189,7 @@ class Modification extends React.Component {
                 <option value="maitre">Maître Jedi</option>
               </select>
               <select
+                className="select"
                 name="personnes"
                 value={this.state.recette.personnes}
                 onChange={this.handleNumberChange}
@@ -205,6 +208,7 @@ class Modification extends React.Component {
                 <option value="8">8</option>
               </select>
               <select
+                className="select"
                 name="tempsPreparation"
                 value={this.state.recette.tempsPreparation}
                 onChange={this.handleNumberChange}
@@ -227,8 +231,9 @@ class Modification extends React.Component {
               <div className="quantite-global-ctnr">
                 <div className="quantite-ctnr">
                   {this.state.recette.ingredients.map((ingredient, index) => (
-                    <div key={index}>
+                    <div key={index} className="quantite">
                       <input
+                        className="input"
                         name="quantité"
                         type="text"
                         placeholder="Quantité"
@@ -239,6 +244,7 @@ class Modification extends React.Component {
                         required
                       />
                       <input
+                        className="input"
                         name="name"
                         type="text"
                         placeholder="Ingredient"
@@ -249,7 +255,7 @@ class Modification extends React.Component {
                         required
                       />
                       <input
-                        className="quantité"
+                        className="supprimer-btn"
                         type="button"
                         value="X"
                         style={{ height: 40, width: 40 }}
@@ -259,7 +265,7 @@ class Modification extends React.Component {
                   ))}
                 </div>
                 <input
-                  className="ingredient-add"
+                  className="ajouter-etape"
                   type="button"
                   value="Ajouter un ingredient"
                   style={{ height: 30, width: 150 }}
@@ -278,7 +284,7 @@ class Modification extends React.Component {
                       required
                     ></textarea>
                     <input
-                      className="etape-supp"
+                      className="supprimer-btn"
                       type="button"
                       value="X"
                       style={{
@@ -302,6 +308,7 @@ class Modification extends React.Component {
             </div>
             <div>
               <input
+                className="input"
                 type="text"
                 value={this.state.recette.photo}
                 name="photo"

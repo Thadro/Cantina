@@ -92,6 +92,7 @@ const Accueil = () => {
         <h1 className="titre-accueil">Liste des recettes</h1>
         <form className="filter-ctnr">
           <input
+            className="input-accueil"
             name="recherche"
             type="text"
             size="15"
@@ -99,13 +100,21 @@ const Accueil = () => {
             value={recherche}
             onChange={handleChange}
           />
-          <select value={niveau} onChange={handleNiveau}>
+          <select
+            value={niveau}
+            onChange={handleNiveau}
+            className="select-accueil"
+          >
             <option value="">Choississez votre niveau de difficulté</option>
             <option value="padawan">Padawan</option>
             <option value="jedi">Jedi</option>
             <option value="maitre">Maître Jedi</option>
           </select>
-          <select value={minPersonne} onChange={handleMinPersonne}>
+          <select
+            value={minPersonne}
+            onChange={handleMinPersonne}
+            className="select-accueil"
+          >
             <option value="">Min Personne</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -116,7 +125,11 @@ const Accueil = () => {
             <option value="7">7</option>
             <option value="8">8</option>
           </select>
-          <select value={maxPersonne} onChange={handleMaxPersonne}>
+          <select
+            value={maxPersonne}
+            onChange={handleMaxPersonne}
+            className="select-accueil"
+          >
             <option value="">Max Personne</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -127,7 +140,11 @@ const Accueil = () => {
             <option value="7">7</option>
             <option value="8">8</option>
           </select>
-          <select value={tempsPrep} onChange={handleTempsPrep}>
+          <select
+            value={tempsPrep}
+            onChange={handleTempsPrep}
+            className="select-accueil"
+          >
             <option value="">Temps de péparation</option>
             <option value="10">Moins de 10 min</option>
             <option value="20">Moins de 20 min</option>
