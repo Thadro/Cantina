@@ -22,13 +22,31 @@ const Accueil = () => {
   // Fonction pour gérer les filtres
   const filter = (recette) => {
     console.log(recette, recherche);
-    return (
-      recette.titre.toLowerCase().includes(recherche.toLowerCase()) &&
-      (niveau === "" || recette.niveau === niveau) &&
-      (minPersonne === "" || recette.personnes >= +minPersonne) &&
-      (maxPersonne === "" || recette.personnes <= +maxPersonne) &&
-      (tempsPrep === "" || recette.tempsPreparation <= +tempsPrep)
-    );
+    if (
+      recherche !== "" &&
+      !recette.titre.toLowerCase().includes(recherche.toLowerCase())
+    ) {
+      //Si la recherche n'est pas vide & que le titre n'inclut pas la recherche, je ne l'inclut pas dans le tableau de retour
+      return false;
+    }
+
+    if (niveau !== "" && recette.niveau !== niveau) {
+      return false;
+    }
+
+    if (minPersonne !== "" && recette.personnes < +minPersonne) {
+      return false;
+    }
+
+    if (maxPersonne !== "" && recette.personnes > +maxPersonne) {
+      return false;
+    }
+
+    if (tempsPrep !== "" && recette.tempsPreparation > +tempsPrep) {
+      return false;
+    }
+
+    return true;
   };
 
   // Permet de gérer le changement des différents champs
